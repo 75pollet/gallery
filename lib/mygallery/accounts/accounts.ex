@@ -13,4 +13,9 @@ defmodule Mygallery.Accounts do
         |> Artist.changeset(attrs)
         |> Repo.insert()
     end
+
+    def get_all_artists do
+        Artist
+        |> Repo.all()
+    end
 end

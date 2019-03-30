@@ -23,4 +23,9 @@ defmodule MygalleryWeb.ArtistController do
         end
       
     end
+
+    def index(conn, _params) do
+        artists = Accounts.get_all_artists
+        render(conn, "index.html", artists: artists)
+    end
   end
