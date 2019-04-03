@@ -1,0 +1,7 @@
+<h1>Our Artists</h1>
+<html>
+<%= for artist <- @artists do %>
+<p><%= artist.username %></p>
+<p></p>
+<% end %>
+</html>

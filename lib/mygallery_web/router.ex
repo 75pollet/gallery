@@ -17,6 +17,9 @@ defmodule MygalleryWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/artist/new", ArtistController, :new
+    post "/artist", ArtistController, :create
+    get "/artists", ArtistController, :index
   end
 
   # Other scopes may use custom stacks.

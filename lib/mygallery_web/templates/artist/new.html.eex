@@ -1,0 +1,38 @@
+<h1>Create Artist</h1>
+<%= form_for @changeset, Routes.artist_path(@conn, :create), fn f -> %>
+
+<div>
+<%= text_input f, :first_name, placeholder: "First Name" %>
+ <%= error_tag f, :first_name %>
+</div>
+<div>
+<%= text_input f, :last_name, placeholder: "Last Name" %>
+ <%= error_tag f, :last_name %>
+</div>
+<div>
+<%= text_input f, :username, placeholder: "Username" %>
+ <%= error_tag f, :username %>
+</div>
+<div>
+<%= text_input f, :id_number, placeholder: "National ID" %>
+ <%= error_tag f, :id_number %>
+</div>
+<div>
+<%= text_input f, :phone_number, placeholder: "Phone Number" %>
+ <%= error_tag f, :phone_number %>
+</div>
+<div>
+<%= text_input f, :password, placeholder: "Password" %>
+ <%= error_tag f, :password %>
+</div>
+<div>
+<%= text_input f, :password_confirmation, placeholder: "Confirm Password" %>
+ <%= error_tag f, :password_confirmation %>
+</div>
+
+<%= submit "Register" %>
+<% end %>
+
+  		
+  		
+  		
