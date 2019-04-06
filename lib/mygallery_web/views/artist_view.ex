@@ -1,3 +1,3 @@
 defmodule MygalleryWeb.ArtistView do
-    use MygalleryWeb, :view
+  use MygalleryWeb, :view
 end
