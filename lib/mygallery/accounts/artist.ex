@@ -1,4 +1,7 @@
 defmodule Mygallery.Accounts.Artist do
+  @moduledoc """
+   this is the artist schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
