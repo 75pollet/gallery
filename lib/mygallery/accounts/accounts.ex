@@ -18,4 +18,9 @@ defmodule Mygallery.Accounts do
         Artist
         |> Repo.all()
     end
+
+    def get_artist_by_id(id) do
+        Artist
+        |> Repo.get(id)
+    end
 end

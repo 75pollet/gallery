@@ -1,0 +1,4 @@
+<p>First Name: <%= @artist.first_name %></p>
+<p>Last Name: <%= @artist.last_name %></p>
+<p>Username: <%= @artist.username %></p>
+<p>National Id Number: <%= @artist.id_number %></p>
