@@ -10,7 +10,9 @@ defmodule MygalleryWeb.Endpoint do
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :mygallery, gzip: false,
+    at: "/",
+    from: :mygallery,
+    gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
