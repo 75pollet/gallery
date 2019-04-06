@@ -18,4 +18,15 @@ defmodule Mygallery.Accounts do
         Artist
         |> Repo.all()
     end
+
+    def get_artist_by_id(id) do
+        Artist
+        |> Repo.get(id)
+    end
+
+    def update_artist(artist, attr) do
+        artist
+        |> Artist.changeset(attr)
+        |> Repo.update()
+    end
 end
