@@ -14,8 +14,7 @@ config :mygallery, MygalleryWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "AY/7rwHK8O8Hbf3vC1HcZ+K9UpbiGj2HQk8lnlrlp8YDHCtORPmvjVeAoECyh1fk",
   render_errors: [view: MygalleryWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Mygallery.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Mygallery.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -26,7 +25,6 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 config :ecto, :json_library, Jason
 
-
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
