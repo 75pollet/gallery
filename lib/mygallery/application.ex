@@ -11,7 +11,7 @@ defmodule Mygallery.Application do
       # Start the Ecto repository
       Mygallery.Repo,
       # Start the endpoint when the application starts
-      MygalleryWeb.Endpoint,
+      MygalleryWeb.Endpoint
       # Starts a worker by calling: Mygallery.Worker.start_link(arg)
       # {Mygallery.Worker, arg},
     ]
