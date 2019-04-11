@@ -22,6 +22,7 @@ defmodule MygalleryWeb.Router do
     post "/artist", ArtistController, :create
     get "/artists", ArtistController, :index
     get "/artist/:id", ArtistController, :show
+    delete "/artist/:id", ArtistController, :delete
   end
 
   # Other scopes may use custom stacks.

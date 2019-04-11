@@ -2,3 +2,4 @@
 <p>Last Name: <%= @artist.last_name %></p>
 <p>Username: <%= @artist.username %></p>
 <p>National Id Number: <%= @artist.id_number %></p>
+<%= link "Delete", to: Routes.artist_path(@conn, :delete, @artist.id), method: "delete", data: [confirm: "Are you sure"] %>

@@ -19,6 +19,13 @@ defmodule Mygallery.Accounts do
     |> Repo.all()
   end
 
+  @doc """
+    delete an artist
+  """
+  def delete_artist(artist) do
+    Repo.delete(artist)
+  end
+
   def get_artist_by_id(id) do
     Artist
     |> Repo.get(id)
