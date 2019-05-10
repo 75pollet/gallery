@@ -22,6 +22,32 @@ defmodule MygalleryWeb.ArtistController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    artist = Accounts.get_artist_by_id(id)
+    changeset = Artist.changeset(artist, %{})
+    render(conn, "edit.html", artist: artist, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "artist" => attrs}) do
+    artist = Accounts.get_artist_by_id(id)
+
+    case Accounts.update_artist(artist, attrs) do
+      {:ok, %Artist{}} ->
+        conn
+        |> put_flash(:info, "Artist has been successfully updated")
+        |> redirect(to: "/")
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Sorry, there was a problem updating the artist. Please try again")
+        |> render("edit.html", changeset: changeset, artist: artist)
+    end
+  end
+
+  def show(conn, %{"id" => _id}) do
+    conn
+  end
+
   def index(conn, _params) do
     artists = Accounts.get_all_artists()
     render(conn, "index.html", artists: artists)
