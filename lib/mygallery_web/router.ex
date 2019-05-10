@@ -14,12 +14,11 @@ defmodule MygalleryWeb.Router do
   end
 
   scope "/", MygalleryWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through :browser
 
     get "/", PageController, :index
-    get "/artist/new", ArtistController, :new
-    post "/artist", ArtistController, :create
-    get "/artists", ArtistController, :index
+    resources "/artist", ArtistController
   end
 
   # Other scopes may use custom stacks.
