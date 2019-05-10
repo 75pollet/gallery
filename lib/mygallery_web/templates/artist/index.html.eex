@@ -2,6 +2,7 @@
 <html>
 <%= for artist <- @artists do %>
 <p><%= artist.username %></p>
+
 <p></p>
 <% end %>
 </html>
