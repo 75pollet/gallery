@@ -18,11 +18,6 @@ defmodule MygalleryWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    # get "/artist/new", ArtistController, :new
-    # post "/artist", ArtistController, :create
-    # get "/artist", ArtistController, :index
-    # get "/artist/:id", ArtistController, :edit
-    # put "/artist", ArtistController, :update
     resources "/artist", ArtistController
   end
 

@@ -52,4 +52,14 @@ defmodule MygalleryWeb.ArtistController do
     artists = Accounts.get_all_artists()
     render(conn, "index.html", artists: artists)
   end
+
+  def delete(conn, %{"id" => id}) do
+    artist = Accounts.get_artist_by_id(id)
+
+    {:ok, _artist} = Accounts.delete_artist(artist)
+
+    conn
+    |> put_flash(:info, "Artist has been Successfully deleted.")
+    |> redirect(to: "/")
+  end
 end
