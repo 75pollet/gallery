@@ -9,9 +9,27 @@ defmodule Mygallery.Accounts do
       creates an artist
   """
   def create_artist(attrs) do
+    attrs =
+      attrs
+      |> Map.replace!(
+        "password",
+        hash_password(attrs["password"])
+      )
+      |> Map.replace!(
+        "password_confirmation",
+        hash_password(attrs["password_confirmation"])
+      )
+
     %Artist{}
     |> Artist.changeset(attrs)
+
+    # |> hash_password
     |> Repo.insert()
+  end
+
+  def hash_password(password) do
+    hash = Bcrypt.add_hash(password)
+    hash.password_hash
   end
 
   def get_all_artists do
