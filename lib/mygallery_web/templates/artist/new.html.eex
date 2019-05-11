@@ -33,7 +33,7 @@
 </div>
 <div>
 <%= label f, :date_of_birth, "Date of Birth"%>
-<%= date_select f, :date_of_birth %>
+<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
  <%= error_tag f, :date_of_birth %>
 </div>
 <div>
