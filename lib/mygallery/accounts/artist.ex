@@ -11,6 +11,10 @@ defmodule Mygallery.Accounts.Artist do
     field(:username, :string)
     field(:id_number, :string)
     field(:phone_number, :string)
+    field(:location, :string)
+    field(:date_of_birth, :date)
+    field(:email, :string)
+    field(:avatar, :string)
     field(:password, :string)
     field(:password_confirmation, :string)
 
@@ -25,6 +29,10 @@ defmodule Mygallery.Accounts.Artist do
       :username,
       :id_number,
       :phone_number,
+      :location,
+      :date_of_birth,
+      :email,
+      :avatar,
       :password,
       :password_confirmation
     ])
