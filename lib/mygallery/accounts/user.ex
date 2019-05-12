@@ -1,4 +1,7 @@
 defmodule Mygallery.Accounts.User do
+  @moduledoc """
+  user schema
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

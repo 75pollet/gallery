@@ -3,6 +3,7 @@ defmodule Mygallery.Accounts do
       this is the accounts context
   """
   alias Mygallery.Accounts.Artist
+  alias Mygallery.Accounts.User
   alias Mygallery.Repo
 
   @doc """
@@ -35,5 +36,11 @@ defmodule Mygallery.Accounts do
     artist
     |> Artist.changeset(attr)
     |> Repo.update()
+  end
+
+  def create_user(attrs) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
   end
 end

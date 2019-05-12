@@ -1,0 +1,42 @@
+<h1>Register</h1>
+<%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
+
+<div>
+<%= label f, :first_name, "First Name"%>
+<%= text_input f, :first_name, placeholder: "First Name"%>
+ <%= error_tag f, :first_name %>
+</div>
+<div>
+<%= label f, :last_name, "Last Name"%>
+<%= text_input f, :last_name, placeholder: "Last Name"%>
+ <%= error_tag f, :last_name %>
+</div>
+
+<div>
+<%= label f, :phone_number, "Phonenumber"%>
+<%= text_input f, :phone_number, placeholder: "+254789874652" %>
+ <%= error_tag f, :phone_number %>
+</div>
+
+<div>
+<%= label f, :email, "Email Adress"%>
+<%= email_input f, :email, placeholder: "jane@example.com" %>
+ <%= error_tag f, :email %>
+</div>
+<div>
+<%= label f, :password, "Password"%>
+<%= password_input f, :password, placeholder: "Password" %>
+ <%= error_tag f, :password %>
+</div>
+<div>
+<%= label f, :password_confirmation, "Confirm Password"%>
+<%= password_input f, :password_confirmation, placeholder: "Confirm Password" %>
+ <%= error_tag f, :password_confirmation %>
+</div>
+
+<%= submit "Register" %>
+<% end %>
+
+  		
+  		
+  		
