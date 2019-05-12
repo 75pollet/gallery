@@ -44,7 +44,9 @@ defmodule Mygallery.MixProject do
       {:jason, "~> 1.0"},
       {:cowboy, "~> 2.5"},
       {:plug_cowboy, "~> 2.0.1"},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:bcrypt_elixir, "~> 2.0"},
+      {:comeonin, "~> 5.1.2"}
     ]
   end
 
