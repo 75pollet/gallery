@@ -19,6 +19,7 @@ defmodule MygalleryWeb.Router do
 
     get "/", PageController, :index
     resources "/artist", ArtistController
+    resources "/users", UserController, only: [:new, :create]
   end
 
   # Other scopes may use custom stacks.
