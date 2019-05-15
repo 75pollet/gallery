@@ -14,7 +14,7 @@
           <ul>
             <li><a href="/">Gallery</a></li>
             <li><a href="/artist">view artists</a></li>
-            <li><a href="/artist/new">register as an artist</a></li>
+            <li><a href="/artist/new" id="reg">register as an artist</a></li>
           </ul>
         </nav>
         

@@ -9,6 +9,9 @@ config :mygallery, MygalleryWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+config :phoenix_integration,
+  endpoint: MygalleryWeb.Endpoint
+
 # Configure your database
 config :mygallery, Mygallery.Repo,
   username: "postgres",
