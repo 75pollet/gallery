@@ -4,14 +4,15 @@ defmodule Mygallery.Accounts.User do
   """
   use Ecto.Schema
   import Ecto.Changeset
+  alias Mygallery.Accounts.Credential
 
   schema "users" do
     field(:first_name, :string)
     field(:last_name, :string)
-    field(:email, :string)
     field(:phone_number, :string)
-    field(:password, :string)
-    field(:password_confirmation, :string)
+
+    has_one(:credential, Credential)
+
     timestamps()
   end
 
@@ -20,12 +21,8 @@ defmodule Mygallery.Accounts.User do
     |> cast(attrs, [
       :first_name,
       :last_name,
-      :email,
-      :phone_number,
-      :password,
-      :password_confirmation
+      :phone_number
     ])
-    |> validate_required([:email, :password, :password_confirmation, :phone_number, :first_name])
-    |> unique_constraint(:email)
+    |> validate_required([:phone_number, :first_name, :last_name])
   end
 end
