@@ -5,7 +5,7 @@ defmodule Mygallery.Repo.Migrations.CreateUser do
     create table(:users) do
       add(:first_name, :string, null: false)
       add(:last_name, :string)
-      add(:email, :string, null: false)
+      add(:email, :string)
       add(:phone_number, :string, null: false)
       add(:password, :string)
       add(:password_confirmation, :string)

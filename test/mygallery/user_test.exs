@@ -7,15 +7,11 @@ defmodule Mygallery.UserTest do
       "first_name" => "Jane",
       "last_name" => "Doe",
       "user_name" => "janedoe",
-      "email" => "janedoe@example.com",
-      "phone_number" => "+345789012345",
-      "password" => "pa$$word",
-      "password_confirmation" => "pa$$word"
+      "phone_number" => "+345789012345"
     }
 
     invalid_attributes = %{
       "first_name" => "Jane",
-      "last_name" => "Doe",
       "user_name" => "janedoe",
       "email" => "janedoe@example.com",
       "phone_number" => "+345789012345"
