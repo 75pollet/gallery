@@ -44,8 +44,9 @@ defmodule MygalleryWeb.ArtistController do
     end
   end
 
-  def show(conn, %{"id" => _id}) do
-    conn
+  def show(conn, %{"id" => id}) do
+    artist = Accounts.get_artist_by_id(id)
+    render(conn, "show.html", artist: artist)
   end
 
   def index(conn, _params) do
