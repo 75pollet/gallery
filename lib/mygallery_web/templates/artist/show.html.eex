@@ -1,5 +1,15 @@
-<p>First Name: <%= @artist.first_name %></p>
-<p>Last Name: <%= @artist.last_name %></p>
-<p>Username: <%= @artist.username %></p>
-<p>National Id Number: <%= @artist.id_number %></p>
-<%= link "Delete", to: Routes.artist_path(@conn, :delete, @artist.id), method: "delete", data: [confirm: "Are you sure"] %>
+<h4>Artist <%= @artist.id %></h4>
+<table>
+<tr>    
+    <td>Username</td>
+    <td>Phone Number</td>
+    <td>Location</td>
+</tr>
+<tr>  
+    <td><%= @artist.first_name %></td>
+    <td><%= @artist.phone_number %></td>
+    <td><%= @artist.location%></td>
+    <td><%=link "delete", to: Routes.artist_path(@conn, :delete, @artist.id), method: "delete", data: [confirm: "Are sure?"]%></td>
+</tr>
+</table>
+
