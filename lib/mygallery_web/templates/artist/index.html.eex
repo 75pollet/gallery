@@ -1,7 +1,7 @@
 <h1>Our Artists</h1>
 <table>
 <tr>
-    <td>Id</td>
+    <td>Number</td>
     <td>Username</td>
     <td>Phone Number</td>
     <td>Location</td>
@@ -9,9 +9,9 @@
 <%= for artist <- @artists do %>
 <tr>
     <td><%= artist.id %></td>
-    <td><%= artist.username %></td>
+    <td><%= artist.first_name %></td>
     <td><%= artist.phone_number %></td>
-    <td><%= artist.username %></td>
+    <td><%= artist.location%></td>
 </tr>
 <% end %>
 </table>
