@@ -9,7 +9,9 @@ defmodule MygalleryWeb.ArtistController do
   end
 
   def create(conn, %{"artist" => params}) do
+    IO.inspect(params)
     case Accounts.create_artist(params) do
+
       {:ok, _property} ->
         conn
         |> put_flash(:info, "Successfully Signed Up")

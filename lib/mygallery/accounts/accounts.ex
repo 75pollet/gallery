@@ -11,7 +11,7 @@ defmodule Mygallery.Accounts do
   """
   def create_artist(attrs) do
     %Artist{}
-    |> Artist.changeset(attrs)
+    |> Artist.registration_changeset(attrs)
     |> Repo.insert()
   end
 

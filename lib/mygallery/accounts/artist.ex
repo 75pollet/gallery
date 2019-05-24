@@ -33,4 +33,10 @@ defmodule Mygallery.Accounts.Artist do
     |> validate_required([:first_name, :last_name, :phone_number])
     |> unique_constraint(:id_number)
   end
+
+  def registration_changeset(artist, params) do
+    artist
+    |> changeset(params)
+    |> cast_assoc(:credential, with: &Credential.changeset/2, required: true)
+  end
 end
