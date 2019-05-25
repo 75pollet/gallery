@@ -18,7 +18,6 @@ defmodule Mygallery.ArtistTest do
       "phone_number" => "+1 (483) 939-4553"
     }
 
-
     [valid_attr: valid_attr]
   end
 
