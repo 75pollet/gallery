@@ -8,10 +8,9 @@ defmodule MygalleryWeb.ArtistController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"artist" => params}) do
-    IO.inspect(params)
     case Accounts.create_artist(params) do
-
       {:ok, _property} ->
         conn
         |> put_flash(:info, "Successfully Signed Up")
