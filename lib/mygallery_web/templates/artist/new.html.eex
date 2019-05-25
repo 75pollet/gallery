@@ -27,6 +27,18 @@
  <%= error_tag f, :location %>
 </div>
 <div>
+<div>
+<%= inputs_for f, :credential, fn cf -> %>
+<%= text_input cf, :username, placeholder: "User Name" %> 
+<%= error_tag cf, :username %> 
+<%= text_input cf, :email, placeholder: "Email" %> 
+<%= error_tag cf, :email %> 
+<%= password_input cf, :password, placeholder: "Password" %> 
+<%= error_tag cf, :password %> 
+<%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
+<%= error_tag cf, :password_confirmation %> 
+<% end %>
+<div>
 <%= label f, :date_of_birth, "Date of Birth"%>
 <%= date_select f, :date_of_birth, year: [options: year_limit()] %>
  <%= error_tag f, :date_of_birth %>

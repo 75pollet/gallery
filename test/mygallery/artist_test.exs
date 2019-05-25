@@ -4,16 +4,18 @@ defmodule Mygallery.ArtistTest do
 
   setup do
     valid_attr = %{
-      "first_name" => "Akinyi",
-      "last_name" => "Otieno",
-      "username" => "thatgirl",
-      "id_number" => "123456",
-      "phone_number" => "0738908786",
-      "location" => "Boya",
-      "date_of_birth" => ~D[2000-01-01],
-      "email" => "akinyi@gmail.com",
-      "password" => "pass1",
-      "password_confirmation" => "pass1"
+      "credential" => %{
+        "email" => "lufakyw@mailinator.com",
+        "password" => "Pa$$w0rd!",
+        "password_confirmation" => "Pa$$w0rd!",
+        "username" => "tawyx"
+      },
+      "date_of_birth" => %{"day" => "13", "month" => "7", "year" => "1999"},
+      "first_name" => "Aurelia",
+      "id_number" => "139",
+      "last_name" => "Schultz",
+      "location" => "Sit sed dolor et es",
+      "phone_number" => "+1 (483) 939-4553"
     }
 
     [valid_attr: valid_attr]
