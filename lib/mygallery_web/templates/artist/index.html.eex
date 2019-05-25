@@ -12,6 +12,7 @@
     <td><%= artist.first_name %></td>
     <td><%= artist.phone_number %></td>
     <td><%= artist.location%></td>
+    <td><%=link "view", to: Routes.artist_path(@conn, :show, artist.id)%></td>
 </tr>
 <% end %>
 </table>
