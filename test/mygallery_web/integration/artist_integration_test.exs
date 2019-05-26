@@ -32,23 +32,21 @@ defmodule MygalleryWeb.ArtistIntegrationTest do
   test "artist  successful login test", %{conn: conn} do
     conn
     |> get("/sessions/new")
-    |> follow_form(
-      %{session: %{email: "lufakyw@mailinator.com",  password: "Pa$$w0rd!"}})
-    |>assert_response( html: "Successful login")
+    |> follow_form(%{session: %{email: "lufakyw@mailinator.com", password: "Pa$$w0rd!"}})
+    |> assert_response(html: "Successful login")
   end
+
   test "artist invalid password login test", %{conn: conn} do
     conn
     |> get("/sessions/new")
-    |> follow_form(
-      %{session: %{email: "lufakyw@mailinator.com",  password: "Pa$$123!"}})
-    |>assert_response( html: "Invalid password or email")
+    |> follow_form(%{session: %{email: "lufakyw@mailinator.com", password: "Pa$$123!"}})
+    |> assert_response(html: "Invalid password or email")
   end
+
   test "login test for non-existing artist", %{conn: conn} do
     conn
     |> get("/sessions/new")
-    |> follow_form(
-      %{session: %{email: "lukeshaw@mail.com",  password: "Pa$$123!"}})
-    |>assert_response( html: "The account does not exist")
+    |> follow_form(%{session: %{email: "lukeshaw@mail.com", password: "Pa$$123!"}})
+    |> assert_response(html: "The account does not exist")
   end
-
 end
