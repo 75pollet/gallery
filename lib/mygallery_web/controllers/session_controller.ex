@@ -20,7 +20,7 @@ defmodule MygalleryWeb.SessionController do
 
       {:error, :not_found, conn} ->
         conn
-        |> put_flash(:error, "The account doesn't exist")
+        |> put_flash(:error, "The account does not exist")
         |> redirect(to: Routes.artist_path(conn, :new))
     end
   end
