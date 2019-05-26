@@ -9,11 +9,16 @@ defmodule MygalleryWeb.Router do
     plug :put_secure_browser_headers
     plug MygalleryWeb.Auth
   end
-
+  pipeline :authorization do
+    plug MygalleryWeb.Authorization
+  end
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  scope "/", MygalleryWeb do
+    pipe_through [:browser, :authorization]
+  end
   scope "/", MygalleryWeb do
     # Use the default browser stack
     pipe_through :browser
