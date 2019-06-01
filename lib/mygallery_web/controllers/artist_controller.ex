@@ -3,7 +3,6 @@ defmodule MygalleryWeb.ArtistController do
   alias Mygallery.Accounts
   alias Mygallery.Accounts.Artist
 
-
   def new(conn, _params) do
     changeset = Artist.changeset(%Artist{}, %{})
     render(conn, "new.html", changeset: changeset)
@@ -36,7 +35,7 @@ defmodule MygalleryWeb.ArtistController do
       {:ok, %Artist{}} ->
         conn
         |> put_flash(:info, "Artist has been successfully updated")
-        |> redirect(to: "/")
+        |> redirect(to: Routes.artist_path(conn, :show, artist))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn

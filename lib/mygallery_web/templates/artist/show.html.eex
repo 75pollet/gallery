@@ -10,6 +10,7 @@
     <td><%= @artist.phone_number %></td>
     <td><%= @artist.location%></td>
     <td><%=link "delete", to: Routes.artist_path(@conn, :delete, @artist.id), method: "delete", data: [confirm: "Are sure?"]%></td>
+     <td><%=link "edit", to: Routes.artist_path(@conn, :edit, @artist)%></td>
 </tr>
 </table>
 
