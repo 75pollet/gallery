@@ -10,8 +10,16 @@ defmodule MygalleryWeb.Router do
     plug MygalleryWeb.Auth
   end
 
+  pipeline :authorization do
+    plug MygalleryWeb.Authorization
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/", MygalleryWeb do
+    pipe_through [:browser, :authorization]
   end
 
   scope "/", MygalleryWeb do
