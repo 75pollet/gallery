@@ -8,6 +8,7 @@ defmodule MygalleryWeb.ArtistController do
     render(conn, "new.html", changeset: changeset)
   end
 
+  @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"artist" => params}) do
     case Accounts.create_artist(params) do
       {:ok, _property} ->
@@ -44,8 +45,9 @@ defmodule MygalleryWeb.ArtistController do
     end
   end
 
-  def show(conn, %{"id" => _id}) do
-    conn
+  def show(conn, %{"id" => id}) do
+    artist = Accounts.get_artist_by_id(id)
+    render(conn, "show.html", artist: artist)
   end
 
   def index(conn, _params) do

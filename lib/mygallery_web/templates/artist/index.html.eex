@@ -1,8 +1,18 @@
 <h1>Our Artists</h1>
-<html>
+<table>
+<tr>
+    <td>Number</td>
+    <td>Username</td>
+    <td>Phone Number</td>
+    <td>Location</td>
+</tr>
 <%= for artist <- @artists do %>
-<p><%= artist.username %></p>
-
-<p></p>
+<tr>
+    <td><%= artist.id %></td>
+    <td><%= artist.first_name %></td>
+    <td><%= artist.phone_number %></td>
+    <td><%= artist.location%></td>
+    <td><%=link "view", to: Routes.artist_path(@conn, :show, artist.id)%></td>
+</tr>
 <% end %>
-</html>
+</table>

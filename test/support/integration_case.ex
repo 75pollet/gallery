@@ -1,9 +1,9 @@
-defmodule Mygallery.IntegrationCase do
+defmodule MygalleryWeb.IntegrationCase do
   use ExUnit.CaseTemplate
 
   using do
     quote do
-      use Mygallery.ConnCase
+      use MygalleryWeb.ConnCase
       use PhoenixIntegration
     end
   end

@@ -1,33 +1,47 @@
-<h1>Create Artist</h1>
+<h1>Register</h1>
 <%= form_for @changeset, Routes.artist_path(@conn, :create), fn f -> %>
 
 <div>
-<%= text_input f, :first_name, placeholder: "First Name" %>
+<%= label f, :first_name, "First Name"%>
+<%= text_input f, :first_name, placeholder: "e.g Jane" %>
  <%= error_tag f, :first_name %>
 </div>
 <div>
-<%= text_input f, :last_name, placeholder: "Last Name" %>
+<%= label f, :last_name, "Last Name"%>
+<%= text_input f, :last_name, placeholder: "e.g Doe" %>
  <%= error_tag f, :last_name %>
 </div>
 <div>
-<%= text_input f, :username, placeholder: "Username" %>
- <%= error_tag f, :username %>
-</div>
-<div>
-<%= text_input f, :id_number, placeholder: "National ID" %>
+<%= label f, :id_number, "National ID Number"%>
+<%= text_input f, :id_number, placeholder: "e.g 34567879" %>
  <%= error_tag f, :id_number %>
 </div>
 <div>
-<%= text_input f, :phone_number, placeholder: "Phone Number" %>
+<%= label f, :phone_number, "Phonenumber"%>
+<%= text_input f, :phone_number, placeholder: "e.g 0789874652" %>
  <%= error_tag f, :phone_number %>
 </div>
 <div>
-<%= text_input f, :password, placeholder: "Password" %>
- <%= error_tag f, :password %>
+<%= label f, :location, "Location"%><i>optional</i>
+<%= text_input f, :location, placeholder: "e.g Kisumu" %>
+ <%= error_tag f, :location %>
 </div>
 <div>
-<%= text_input f, :password_confirmation, placeholder: "Confirm Password" %>
- <%= error_tag f, :password_confirmation %>
+<div>
+<%= inputs_for f, :credential, fn cf -> %>
+<%= text_input cf, :username, placeholder: "User Name" %> 
+<%= error_tag cf, :username %> 
+<%= text_input cf, :email, placeholder: "Email" %> 
+<%= error_tag cf, :email %> 
+<%= password_input cf, :password, placeholder: "Password" %> 
+<%= error_tag cf, :password %> 
+<%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
+<%= error_tag cf, :password_confirmation %> 
+<% end %>
+<div>
+<%= label f, :date_of_birth, "Date of Birth"%>
+<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
+ <%= error_tag f, :date_of_birth %>
 </div>
 
 <%= submit "Register" %>

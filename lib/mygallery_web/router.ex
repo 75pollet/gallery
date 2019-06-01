@@ -7,10 +7,19 @@ defmodule MygalleryWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug MygalleryWeb.Auth
+  end
+
+  pipeline :authorization do
+    plug MygalleryWeb.Authorization
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/", MygalleryWeb do
+    pipe_through [:browser, :authorization]
   end
 
   scope "/", MygalleryWeb do
@@ -19,6 +28,8 @@ defmodule MygalleryWeb.Router do
 
     get "/", PageController, :index
     resources "/artist", ArtistController
+    resources "/users", UserController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.

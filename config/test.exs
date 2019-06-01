@@ -6,12 +6,11 @@ config :mygallery, MygalleryWeb.Endpoint,
   http: [port: 4001],
   server: false
 
-# configure phoenix integration
-config :phoenix_integration,
-  endpoint: Mygallery.Endpoint
-
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :phoenix_integration,
+  endpoint: MygalleryWeb.Endpoint
 
 # Configure your database
 config :mygallery, Mygallery.Repo,

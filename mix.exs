@@ -36,15 +36,17 @@ defmodule Mygallery.MixProject do
       {:phoenix, github: "phoenixframework/phoenix", override: true},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:phoenix_integration, "~> 0.6", only: :test},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_integration, "~> 0.6", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:cowboy, "~> 2.5"},
       {:plug_cowboy, "~> 2.0.1"},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:bcrypt_elixir, "~> 2.0"},
+      {:comeonin, "~> 5.1.2"}
     ]
   end
 
