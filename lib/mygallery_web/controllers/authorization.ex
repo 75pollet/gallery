@@ -1,19 +1,22 @@
 defmodule MygalleryWeb.Authorization do
+  @moduledoc """
+  authorization module
+  """
   use Phoenix.Controller
   import Plug.Conn
 
-def init(opts) do
-  opts
-end
-def call(conn, _opts) do
-  if conn.assigns.current_user do
-    conn
-  else
-    conn
-    |> put_flash(:error, "You must login to access this page")
-    |> redirect(to: "/")
-    |> halt()
+  def init(opts) do
+    opts
   end
-end
 
+  def call(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must login to access this page")
+      |> redirect(to: "/")
+      |> halt()
+    end
+  end
 end
