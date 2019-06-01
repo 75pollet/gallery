@@ -3,6 +3,7 @@ defmodule MygalleryWeb.ArtistController do
   alias Mygallery.Accounts
   alias Mygallery.Accounts.Artist
 
+
   def new(conn, _params) do
     changeset = Artist.changeset(%Artist{}, %{})
     render(conn, "new.html", changeset: changeset)
@@ -13,8 +14,12 @@ defmodule MygalleryWeb.ArtistController do
     with {:ok, artist} <- Accounts.create_artist(params) do
       conn
       |> put_flash(:info, "Successfully Signed Up")
-      |> redirect(to:  Routes.artist_path(conn, :show, artist))
-
+      |> redirect(to: Routes.artist_path(conn, :show, artist))
+    else
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Signup not successful fill in required fields")
+        |> render("new.html", changeset: changeset)
     end
   end
 
