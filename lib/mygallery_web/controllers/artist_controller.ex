@@ -10,15 +10,14 @@ defmodule MygalleryWeb.ArtistController do
 
   @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"artist" => params}) do
-    case Accounts.create_artist(params) do
-      {:ok, _property} ->
-        conn
-        |> put_flash(:info, "Successfully Signed Up")
-        |> redirect(to: "/")
-
+    with {:ok, artist} <- Accounts.create_artist(params) do
+      conn
+      |> put_flash(:info, "Successfully Signed Up")
+      |> redirect(to: Routes.artist_path(conn, :show, artist))
+    else
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
-        |> put_flash(:error, "There was a problem signing up")
+        |> put_flash(:error, "Signup not successful fill in required fields")
         |> render("new.html", changeset: changeset)
     end
   end
@@ -36,7 +35,7 @@ defmodule MygalleryWeb.ArtistController do
       {:ok, %Artist{}} ->
         conn
         |> put_flash(:info, "Artist has been successfully updated")
-        |> redirect(to: "/")
+        |> redirect(to: Routes.artist_path(conn, :show, artist))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
