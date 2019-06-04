@@ -32,6 +32,7 @@ defmodule Mygallery.Accounts do
   def get_artist_by_id(id) do
     Artist
     |> Repo.get(id)
+    |> Repo.preload(:credential)
   end
 
   def update_artist(artist, attr) do
