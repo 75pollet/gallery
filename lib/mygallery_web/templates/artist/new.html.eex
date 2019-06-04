@@ -2,46 +2,49 @@
 <%= form_for @changeset, Routes.artist_path(@conn, :create), fn f -> %>
 
 <div>
-<%= label f, :first_name, "First Name"%>
-<%= text_input f, :first_name, placeholder: "e.g Jane" %>
- <%= error_tag f, :first_name %>
+	<%= text_input f, :first_name, placeholder: "First Name e.g Jane" %>
+	<%= error_tag f, :first_name %>
 </div>
 <div>
-<%= label f, :last_name, "Last Name"%>
-<%= text_input f, :last_name, placeholder: "e.g Doe" %>
- <%= error_tag f, :last_name %>
+	<%= text_input f, :last_name, placeholder: "Last Name e.g Doe" %>
+	<%= error_tag f, :last_name %>
 </div>
 <div>
-<%= label f, :id_number, "National ID Number"%>
-<%= text_input f, :id_number, placeholder: "e.g 34567879" %>
- <%= error_tag f, :id_number %>
+	<%= text_input f, :id_number, placeholder: "National ID e.g 34567879" %>
+	<%= error_tag f, :id_number %>
 </div>
 <div>
-<%= label f, :phone_number, "Phonenumber"%>
-<%= text_input f, :phone_number, placeholder: "e.g 0789874652" %>
- <%= error_tag f, :phone_number %>
+	<%= text_input f, :phone_number, placeholder: "Phone Number e.g 0789874652" %>
+	<%= error_tag f, :phone_number %>
 </div>
 <div>
-<%= label f, :location, "Location"%><i>optional</i>
-<%= text_input f, :location, placeholder: "e.g Kisumu" %>
- <%= error_tag f, :location %>
+	<%= text_input f, :location, placeholder: "Location e.g Kisumu" %>
+	<%= error_tag f, :location %>
 </div>
 <div>
 <div>
 <%= inputs_for f, :credential, fn cf -> %>
-<%= text_input cf, :username, placeholder: "User Name" %> 
-<%= error_tag cf, :username %> 
-<%= text_input cf, :email, placeholder: "Email" %> 
-<%= error_tag cf, :email %> 
-<%= password_input cf, :password, placeholder: "Password" %> 
-<%= error_tag cf, :password %> 
-<%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
-<%= error_tag cf, :password_confirmation %> 
+<div>
+  <%= text_input cf, :username, placeholder: "User Name" %> 
+  <%= error_tag cf, :username %> 
+</div>
+<div>
+  <%= text_input cf, :email, placeholder: "Email" %> 
+  <%= error_tag cf, :email %> 
+</div>
+<div>
+  <%= password_input cf, :password, placeholder: "Password" %> 
+  <%= error_tag cf, :password %> 
+</div>
+<div>
+  <%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
+  <%= error_tag cf, :password_confirmation %> 
+</div>
 <% end %>
 <div>
-<%= label f, :date_of_birth, "Date of Birth"%>
-<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
- <%= error_tag f, :date_of_birth %>
+	<%= label f, :date_of_birth, "Date of Birth"%>
+	<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
+	<%= error_tag f, :date_of_birth %>
 </div>
 
 <%= submit "Register" %>
