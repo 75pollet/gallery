@@ -21,14 +21,6 @@
 <%= text_input f, :phone_number, placeholder: "Phone Number" %>
  <%= error_tag f, :phone_number %>
 </div>
-<div>
-<%= text_input f, :password, placeholder: "Password" %>
- <%= error_tag f, :password %>
-</div>
-<div>
-<%= text_input f, :password_confirmation, placeholder: "Confirm Password" %>
- <%= error_tag f, :password_confirmation %>
-</div>
 
 <%= submit "Save" %>
 <% end %>
