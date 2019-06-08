@@ -70,4 +70,10 @@ defmodule Mygallery.Accounts do
     |> Repo.one()
     |> Repo.preload(:credential)
   end
+
+  def create_admin(attrs) do
+    %User{}
+    |> User.admin_registration(attrs)
+    |> Repo.insert!()
+  end
 end
