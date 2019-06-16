@@ -37,37 +37,36 @@
 			<div class="col">
 			<div>
 			<div>
-			<%= inputs_for f, :credential, fn cf -> %>
-			<div class="form-group">
-  			<%= text_input cf, :username, placeholder: "User Name" %> 
-  			<%= error_tag cf, :username %> 
+				<%= inputs_for f, :credential, fn cf -> %>
+				<div class="form-group">
+  					<%= text_input cf, :username, placeholder: "User Name" %> 
+  					<%= error_tag cf, :username %> 
+				</div>
+				<div class="form-group">
+  					<%= text_input cf, :email, placeholder: "Email" %> 
+  					<%= error_tag cf, :email %> 
+				</div>
+				<div class="form-group">
+  					<%= password_input cf, :password, placeholder: "Password" %> 
+  					<%= error_tag cf, :password %> 
+				</div>
+				<div class="form-group">
+  					<%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
+  					<%= error_tag cf, :password_confirmation %> 
+				</div>
+				<% end %>
+				<div class="form-group">
+					<%= label f, :date_of_birth, "Date of Birth", class: "text-muted " %>
+					<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
+					<%= error_tag f, :date_of_birth %>
+				</div>
 			</div>
-			<div class="form-group">
-  			<%= text_input cf, :email, placeholder: "Email" %> 
-  			<%= error_tag cf, :email %> 
+			<div class="row text-left">
+				<%= submit "Register", class: "btn btn-primary" %>
+				<% end %>
 			</div>
-			<div class="form-group">
-  			<%= password_input cf, :password, placeholder: "Password" %> 
-  			<%= error_tag cf, :password %> 
-			</div>
-<div class="form-group">
-  <%= password_input cf, :password_confirmation, placeholder: "Confirm Password" %> 
-  <%= error_tag cf, :password_confirmation %> 
-</div>
-<% end %>
-<div class="form-group">
-	<%= label f, :date_of_birth, "Date of Birth", class: "text-muted " %>
-	<%= date_select f, :date_of_birth, year: [options: year_limit()] %>
-	<%= error_tag f, :date_of_birth %>
-</div>
-</div>
-<div class="row text-left">
-<%= submit "Register", class: "btn btn-primary" %>
-<% end %>
-</div>
-</div>
-
-</div>
+		</div>
+	</div>
  </form> 		
   		
   		
