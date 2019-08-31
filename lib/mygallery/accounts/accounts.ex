@@ -32,6 +32,7 @@ defmodule Mygallery.Accounts do
   def get_artist_by_id(id) do
     Artist
     |> Repo.get(id)
+    |> Repo.preload(:credential)
   end
 
   def update_artist(artist, attr) do
@@ -68,5 +69,11 @@ defmodule Mygallery.Accounts do
     artist
     |> Repo.one()
     |> Repo.preload(:credential)
+  end
+
+  def create_admin(attrs) do
+    %User{}
+    |> User.admin_registration(attrs)
+    |> Repo.insert!()
   end
 end

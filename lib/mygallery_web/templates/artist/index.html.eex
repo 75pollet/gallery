@@ -1,18 +1,19 @@
-<h1>Our Artists</h1>
-<table>
-<tr>
-    <td>Number</td>
-    <td>Username</td>
-    <td>Phone Number</td>
-    <td>Location</td>
+<h1 class="text-secondary text-center font-weight-bold">Our Artists</h1>
+<table class="table shadow-lg table-striped table-hover">
+<tr class="table-secondary text-secondary font-weight-bold">
+    <td scope="col">#</td>
+    <td scope="col">Username</td>
+    <td scope="col">Phone Number</td>
+    <td scope="col">Location</td>
+    <td></td>
 </tr>
 <%= for artist <- @artists do %>
-<tr>
-    <td><%= artist.id %></td>
+<tr class="text-secondary" >
+    <th scope="row"><%= artist.id %></th>
     <td><%= artist.first_name %></td>
     <td><%= artist.phone_number %></td>
     <td><%= artist.location%></td>
-    <td><%=link "view", to: Routes.artist_path(@conn, :show, artist.id)%></td>
+    <td><%=link "view", to: Routes.artist_path(@conn, :show, artist.id), class: "btn btn-outline-secondary"%></td>
 </tr>
 <% end %>
 </table>
