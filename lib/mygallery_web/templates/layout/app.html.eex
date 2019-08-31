@@ -10,28 +10,34 @@
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="/">Gallery</a></li>
-            <li><a href="/artist">view artists</a></li>
-            <li><a href="/artist/new" id="reg">register as an artist</a></li>
-
-          </ul>
-          <ul>
-            <%= if @current_user do %>
-              <li><%= @current_user.first_name %></li>
-              <li><%= link "Log Out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %></li>
-            <% else %>
-              <li><%= link "Log In", to: Routes.session_path(@conn, :new)%></li>
-            <% end %>
-          </ul>
-        </nav>
-        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="/">Gallery</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse lg-right" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="/artist">Artists</a>
+              <a id="reg" class="nav-item nav-link" href="/artist/new">Register</a>
+              <%= if @current_user do %>
+                <%= @current_user.first_name %>
+                <%= link "Log Out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-info" %>
+              <% else %>
+                <%= link "Log In", to: Routes.session_path(@conn, :new), class: "btn btn-info" %>
+              <% end %>
+            </div>
+          </div>
+        </nav> 
       </section>
     </header>
     <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= unless is_nil(get_flash(@conn, :info)) do %>
+      <div class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></div>
+    <% end %>
+    <%= unless is_nil(get_flash(@conn, :error)) do %>
+      <div class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></div>
+    <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
