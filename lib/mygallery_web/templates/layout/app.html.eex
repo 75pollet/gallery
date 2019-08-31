@@ -19,7 +19,7 @@
             <div class="navbar-nav">
               <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
               <a class="nav-item nav-link" href="/artist">Artists</a>
-              <a class="nav-item nav-link" href="/artist/new">Register</a>
+              <a id="reg" class="nav-item nav-link" href="/artist/new">Register</a>
               <%= if @current_user do %>
                 <%= @current_user.first_name %>
                 <%= link "Log Out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-info" %>
