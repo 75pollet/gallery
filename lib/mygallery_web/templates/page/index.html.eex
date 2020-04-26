@@ -1,3 +1,13 @@
+<style type="text/css">
+	.jumbotron{
+		margin-top: 50px;
+		text-align: center;
+	}
+	h2{
+		color: #556B2F;
+		
+	}
+</style>
 <section class="jumbotron">
   <h2><%= gettext "Welcome to %{name}!", name: "My Gallery" %></h2>
   Hey there, Thank you for stopping by. The sight is still under construction so expect to see a lot of exciting stuff. Especially if you're an art lover.
