@@ -1,4 +1,6 @@
 defmodule Mygallery.UserTest do
+  @moduledoc false
+  
   use Mygallery.DataCase
   alias Mygallery.Accounts
 
@@ -7,7 +9,14 @@ defmodule Mygallery.UserTest do
       "first_name" => "Jane",
       "last_name" => "Doe",
       "user_name" => "janedoe",
-      "phone_number" => "+345789012345"
+      "admin" =>  Enum.random([true, false]),
+      "phone_number" => "+345789012345",
+      "credential" => %{
+        "email" => "lufakyw@mailinator.com",
+        "password" => "Pa$$w0rd!",
+        "password_confirmation" => "Pa$$w0rd!",
+        "username" => "tawyx"
+      }
     }
 
     invalid_attributes = %{
@@ -21,7 +30,7 @@ defmodule Mygallery.UserTest do
   end
 
   test "successfully creates user", %{valid_attributes: valid_attributes} do
-    {:ok, _} = Accounts.create_user(valid_attributes)
+   {:ok, _} = Accounts.create_user(valid_attributes)
   end
 
   test "unsuccessful user creation", %{invalid_attributes: invalid_attributes} do
