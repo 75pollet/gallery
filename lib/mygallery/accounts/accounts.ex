@@ -39,7 +39,7 @@ defmodule Mygallery.Accounts do
     artist
     |> Artist.changeset(attr)
     |> Repo.update()
-  end 
+  end
 
   def check_artist_email_and_pass(email, password) do
     artist = get_artist_by_email(email)
