@@ -41,12 +41,6 @@ defmodule Mygallery.Accounts do
     |> Repo.update()
   end
 
-  def create_user(attrs) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
-  end
-
   def check_artist_email_and_pass(email, password) do
     artist = get_artist_by_email(email)
 
@@ -71,9 +65,28 @@ defmodule Mygallery.Accounts do
     |> Repo.preload(:credential)
   end
 
-  def create_admin(attrs) do
+  @doc """
+  creates users. both admin and customers. To create an admin user,
+  give the key admin the value true.
+
+      Example
+      iex> Mygallery.Accounts.create_user(%{
+      "first_name" => "Jane",
+      "last_name" => "Doe",
+      "user_name" => "janedoe",
+      "admin" => true,
+      "phone_number" => "+345789012345",
+      "credential" => %{
+        "email" => "lufakyw@mailinator.com",
+        "password" => "Pa$$w0rd!",
+        "password_confirmation" => "Pa$$w0rd!",
+        "username" => "tawyx"
+      }
+    })
+  """
+  def create_user(attrs) do
     %User{}
-    |> User.admin_registration(attrs)
-    |> Repo.insert!()
+    |> User.user_registration(attrs)
+    |> Repo.insert()
   end
 end
