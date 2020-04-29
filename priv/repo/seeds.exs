@@ -1,6 +1,8 @@
 alias Mygallery.Accounts
 
-Accounts.create_admin(%{
+{:ok, admin_role} = Accounts.create_role(%{name: "admin"})
+
+Accounts.create_user(%{
   "credential" => %{
     "email" => "admin@example.com",
     "password" => "adminpass!",
@@ -9,7 +11,8 @@ Accounts.create_admin(%{
   "first_name" => "pollet",
   "last_name" => "wayu",
   "phone_number" => "+2222222222222",
-  "admin" => true
+  "admin" => true,
+  "role_id" => admin_role.id
 })
 
 # Script for populating the database. You can run it as:

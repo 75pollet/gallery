@@ -10,12 +10,12 @@
       .btn-sm{
         margin-left: 700px;
       }
-     
+
     </style>
   </head>
   <body>
     <header>
-      
+
 
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark justify-content-center">
           <a class="navbar-brand" href="/"><img src="/images/gallery.png" alt="Logo" style="width:50px;"></a>
@@ -26,7 +26,7 @@
             <div class="navbar-nav">
               <a class="nav-item nav-link active  small" href="/">Home <span class="sr-only">(current)</span></a>
               <%= if @current_user do %>
-              <%= if @current_user.admin do %>
+              <%= if @current_user.role_id == role_id("admin") do %>
               <a class="nav-item nav-link small" href="/artist">Artists</a>
               <% end %>
               <% end %>
@@ -39,8 +39,8 @@
               <% end %>
             </div>
           </div>
-        </nav> 
-    
+        </nav>
+
     </header>
     <main role="main" class="container">
     <%= unless is_nil(get_flash(@conn, :info)) do %>
