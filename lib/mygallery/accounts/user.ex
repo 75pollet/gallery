@@ -4,7 +4,7 @@ defmodule Mygallery.Accounts.User do
   """
   use Ecto.Schema
   import Ecto.Changeset
-  alias Mygallery.Accounts.Credential
+  alias Mygallery.Accounts.{Credential, Role}
 
   schema "users" do
     field(:first_name, :string)
@@ -12,6 +12,7 @@ defmodule Mygallery.Accounts.User do
     field(:phone_number, :string)
     field(:admin, :boolean)
     has_one(:credential, Credential)
+    belongs_to(:role, Role)
 
     timestamps()
   end
@@ -21,25 +22,16 @@ defmodule Mygallery.Accounts.User do
     |> cast(attrs, [
       :first_name,
       :last_name,
-      :phone_number
-    ])
-    |> validate_required([:phone_number, :first_name, :last_name])
-  end
-
-  def admin_changeset(user, attrs \\ %{}) do
-    user
-    |> cast(attrs, [
-      :first_name,
-      :last_name,
       :phone_number,
-      :admin
+      :admin,
+      :role_id
     ])
-    |> validate_required([:first_name, :last_name, :phone_number, :admin])
+    |> validate_required([:first_name, :last_name, :phone_number, :admin, :role_id])
   end
 
-  def admin_registration(user, params) do
+  def user_registration(user, params) do
     user
-    |> admin_changeset(params)
+    |> changeset(params)
     |> cast_assoc(:credential, with: &Credential.changeset/2, required: true)
   end
 end

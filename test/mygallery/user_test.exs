@@ -1,13 +1,25 @@
 defmodule Mygallery.UserTest do
+  @moduledoc false
+
   use Mygallery.DataCase
   alias Mygallery.Accounts
 
   setup do
+    {:ok, admin} = Accounts.create_role(%{name: "admin"})
+
     valid_attributes = %{
       "first_name" => "Jane",
       "last_name" => "Doe",
       "user_name" => "janedoe",
-      "phone_number" => "+345789012345"
+      "admin" => Enum.random([true, false]),
+      "phone_number" => "+345789012345",
+      "credential" => %{
+        "email" => "lufakyw@mailinator.com",
+        "password" => "Pa$$w0rd!",
+        "password_confirmation" => "Pa$$w0rd!",
+        "username" => "tawyx"
+      },
+      "role_id" => admin.id
     }
 
     invalid_attributes = %{

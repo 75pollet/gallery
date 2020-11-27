@@ -4,8 +4,7 @@ defmodule Mygallery.Accounts do
   """
   import Ecto.Query
 
-  alias Mygallery.Accounts.Artist
-  alias Mygallery.Accounts.User
+  alias Mygallery.Accounts.{Artist, Role, User}
   alias Mygallery.Repo
 
   @doc """
@@ -41,12 +40,6 @@ defmodule Mygallery.Accounts do
     |> Repo.update()
   end
 
-  def create_user(attrs) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
-  end
-
   def check_artist_email_and_pass(email, password) do
     artist = get_artist_by_email(email)
 
@@ -71,9 +64,44 @@ defmodule Mygallery.Accounts do
     |> Repo.preload(:credential)
   end
 
-  def create_admin(attrs) do
+  @doc """
+  creates users. both admin and customers. To create an admin user,
+  give the key admin the value true.
+
+      Example
+      iex> Mygallery.Accounts.create_user(%{
+      "first_name" => "Jane",
+      "last_name" => "Doe",
+      "user_name" => "janedoe",
+      "admin" => true,
+      "phone_number" => "+345789012345",
+      "credential" => %{
+        "email" => "lufakyw@mailinator.com",
+        "password" => "Pa$$w0rd!",
+        "password_confirmation" => "Pa$$w0rd!",
+        "username" => "tawyx"
+      }
+    })
+  """
+  def create_user(attrs) do
     %User{}
-    |> User.admin_registration(attrs)
-    |> Repo.insert!()
+    |> User.user_registration(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+    creates a role in the database
+  """
+  def create_role(attrs) do
+    %Role{}
+    |> Role.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+    returns a role struct given the name of the role
+  """
+  def get_role(name) do
+    Repo.get_by(Role, name: name)
   end
 end

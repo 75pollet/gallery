@@ -10,11 +10,12 @@ defmodule MygalleryWeb.ArtistController do
 
   @spec create(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def create(conn, %{"artist" => params}) do
-    with {:ok, artist} <- Accounts.create_artist(params) do
-      conn
-      |> put_flash(:info, "Successfully Signed Up")
-      |> redirect(to: Routes.artist_path(conn, :show, artist))
-    else
+    case Accounts.create_artist(params) do
+      {:ok, artist} ->
+        conn
+        |> put_flash(:info, "Successfully Signed Up")
+        |> redirect(to: Routes.artist_path(conn, :show, artist))
+
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Signup not successful fill in required fields")
