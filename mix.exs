@@ -5,7 +5,7 @@ defmodule Mygallery.MixProject do
     [
       app: :mygallery,
       version: "0.1.0",
-      elixir: "~> 1.5",
+      elixir: "~> 1.9.1",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -33,18 +33,19 @@ defmodule Mygallery.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, github: "phoenixframework/phoenix", override: true},
+      {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_ecto, "~> 4.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
+      {:ecto_sql, "~> 3.5"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:phoenix_integration, "~> 0.6", only: :test},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:cowboy, "~> 2.5"},
       {:plug_cowboy, "~> 2.0.1"},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.1.2", only: [:dev, :test], runtime: false},
       {:bcrypt_elixir, "~> 2.0"},
       {:comeonin, "~> 5.1.2"}
     ]
