@@ -5,6 +5,8 @@ defmodule Mygallery.UserTest do
   alias Mygallery.Accounts
 
   setup do
+    {:ok, admin} = Accounts.create_role(%{name: "admin"})
+
     valid_attributes = %{
       "first_name" => "Jane",
       "last_name" => "Doe",
@@ -16,7 +18,8 @@ defmodule Mygallery.UserTest do
         "password" => "Pa$$w0rd!",
         "password_confirmation" => "Pa$$w0rd!",
         "username" => "tawyx"
-      }
+      },
+      "role_id" => admin.id
     }
 
     invalid_attributes = %{

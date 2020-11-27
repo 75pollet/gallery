@@ -4,8 +4,7 @@ defmodule Mygallery.Accounts do
   """
   import Ecto.Query
 
-  alias Mygallery.Accounts.Artist
-  alias Mygallery.Accounts.User
+  alias Mygallery.Accounts.{Artist, Role, User}
   alias Mygallery.Repo
 
   @doc """
@@ -88,5 +87,21 @@ defmodule Mygallery.Accounts do
     %User{}
     |> User.user_registration(attrs)
     |> Repo.insert()
+  end
+
+  @doc """
+    creates a role in the database
+  """
+  def create_role(attrs) do
+    %Role{}
+    |> Role.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+    returns a role struct given the name of the role
+  """
+  def get_role(name) do
+    Repo.get_by(Role, name: name)
   end
 end

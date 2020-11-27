@@ -4,7 +4,7 @@ defmodule Mygallery.Accounts.Artist do
   """
   use Ecto.Schema
   import Ecto.Changeset
-  alias Mygallery.Accounts.Credential
+  alias Mygallery.Accounts.{Credential, Role}
 
   schema "artists" do
     field(:first_name, :string)
@@ -15,6 +15,7 @@ defmodule Mygallery.Accounts.Artist do
     field(:date_of_birth, :date)
     field(:avatar, :string)
     has_one(:credential, Credential)
+    belongs_to(:role, Role)
 
     timestamps()
   end
@@ -28,7 +29,8 @@ defmodule Mygallery.Accounts.Artist do
       :phone_number,
       :location,
       :date_of_birth,
-      :avatar
+      :avatar,
+      :role_id
     ])
     |> validate_required([:first_name, :last_name, :phone_number])
     |> unique_constraint(:id_number)
